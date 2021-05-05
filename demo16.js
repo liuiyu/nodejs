@@ -8,9 +8,12 @@ console.log(array3.join('.'))
 var array5 = Array.from("HelloWorldNodeJS")
 console.log(array5)
 //
+console.log("sort array3", array3.sort())
+console.log("sort array3, array3=", array3)
 var array4 = [3, 1, 4, 5, 9, 80, 27, 100]
-console.log(typeof array4.sort())
-const result3 = array4.sort()
+console.log("sort by default, type=", typeof array4.sort(), array4)
+//const result3 = array4.sort(function (a, b) { return a - b })
+const result3 = array4.sort((a, b) => b - a)
 console.log(array4)
 console.log(result3)
 
@@ -26,15 +29,14 @@ array4.forEach(function (e) {
 }, null)
 console.log("sum2=", sum2)
 console.log("array4", array4)
-// hold on...
-// array4.forEach(function (e) {
-//     e *= 2
-//     console.log('%c 🥥 e: ', 'font-size:20px;background-color: #F5CE50;color:#fff;', e);
-    
-// }, this)
-
-array4.forEach((e)=>{
+// hold
+const result5 = array4.forEach(function (e) {
     e *= 2
-    console.log('%c 🥥 e: ', 'font-size:20px;background-color: #F5CE50;color:#fff;', e);
-})
-console.log("array4 now=", array4)
+}, this)
+console.log("[not change]array4 now=", array4)
+const result6 = array4.forEach(function (e, i, a) {
+    //console.log(`element=${e}, index=${i}`)
+    //console.log(a)
+    this[i] = this[i] * this[i]
+}, array4)
+console.log("[should change]array4 now=", array4)
